@@ -62,17 +62,19 @@ public class MainActivity extends AppCompatActivity {
         btnDel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                for (int i = 0; i < lstContact.size(); i++) {
-                    if(lstContact.get(i).isStatus() == true){
-                        lstContact.remove(lstContact.get(i));
-                    }
-                }
+
 
                 dlgAlert.setMessage("Bạn có chắc chắn xóa không?")
                         .setCancelable(false)
                         .setPositiveButton("Có", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                lstContactAdapter.notifyDataSetChanged();
+                                for (int i = 0; i < lstContact.size(); i++) {
+                                    if(lstContact.get(i).isStatus()){
+                                        lstContact.remove(lstContact.get(i));
+                                        i--;
+                                    }
+                                }
+                                listView.setAdapter(lstContactAdapter);
                             }
                         })
                         .setNegativeButton("Không", new DialogInterface.OnClickListener() {

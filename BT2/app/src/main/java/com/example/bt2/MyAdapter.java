@@ -52,12 +52,7 @@ public class MyAdapter extends BaseAdapter {
             checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                    if(b){
-                        data.get(i).setStatus(true);
-                    }
-                    else{
-                        data.get(i).setStatus(false);
-                    }
+                    data.get(i).setStatus(b);
                 }
             });
         }
